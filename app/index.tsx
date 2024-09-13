@@ -5,6 +5,8 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  TextInput,
+  Button,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
@@ -106,6 +108,14 @@ const Page = () => {
             </TouchableOpacity>
           </Link>
         ))}
+        <TextInput
+          style={styles.textInput}
+          value={name}
+          onChangeText={setName}
+          placeholder="Your username"
+          multiline={false}
+        />
+        <Button title="Set Name" onPress={setUser} />
         <Text style={{ textAlign: "center", margin: 10 }}>{greeting}</Text>
         <Authenticated>
           <Text style={{ textAlign: "center", margin: 10 }}>
@@ -120,14 +130,14 @@ const Page = () => {
         <SignIn />
         <SignOut />
       </ScrollView>
-      <Dialog.Container visible={visible}>
+      {/* <Dialog.Container visible={visible}>
         <Dialog.Title>Username required</Dialog.Title>
         <Dialog.Description>
           Please insert a name to start chatting.
         </Dialog.Description>
         <Dialog.Input onChangeText={setName} />
         <Dialog.Button label="Set name" onPress={setUser} />
-      </Dialog.Container>
+      </Dialog.Container> */}
     </View>
   );
 };
@@ -154,6 +164,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: "gray",
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    minHeight: 40,
+    backgroundColor: "#fff",
   },
 });
 
