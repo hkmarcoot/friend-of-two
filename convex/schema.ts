@@ -1,8 +1,10 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
+import { authTables } from "@convex-dev/auth/server";
 
 // This is our schema for the database
 export default defineSchema({
+  ...authTables,
   groups: defineTable({
     description: v.string(),
     icon_url: v.string(),

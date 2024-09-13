@@ -1,15 +1,23 @@
 import { Ionicons } from "@expo/vector-icons";
+import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { ConvexProvider, ConvexReactClient } from "convex/react";
 import { Link, Stack } from "expo-router";
 import { TouchableOpacity } from "react-native";
+import * as SecureStore from "expo-secure-store";
 
 const convex = new ConvexReactClient(process.env.EXPO_PUBLIC_CONVEX_URL!, {
   unsavedChangesWarning: false,
 });
 
+const secureStorage = {
+  getItem: SecureStore.getItemAsync,
+  setItem: SecureStore.setItemAsync,
+  removeItem: SecureStore.deleteItemAsync,
+};
+
 export default function RootLayoutNav() {
   return (
-    <ConvexProvider client={convex}>
+    <ConvexAuthProvider client={convex} storage={secureStorage}>
       <Stack
         screenOptions={{
           headerStyle: {
@@ -50,6 +58,6 @@ export default function RootLayoutNav() {
           }}
         />
       </Stack>
-    </ConvexProvider>
+    </ConvexAuthProvider>
   );
 }

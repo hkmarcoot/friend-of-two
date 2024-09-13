@@ -7,11 +7,20 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import { useAction, useQuery } from "convex/react";
+import {
+  Authenticated,
+  Unauthenticated,
+  useAction,
+  useQuery,
+} from "convex/react";
 import { api } from "../convex/_generated/api";
 import { Link } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Dialog from "react-native-dialog";
+
+import { SignIn } from "./SignIn";
+import { SignOut } from "./SignOut";
+
 // import { StatusBar } from "expo-status-bar";
 
 // const Page = () => {
@@ -98,6 +107,18 @@ const Page = () => {
           </Link>
         ))}
         <Text style={{ textAlign: "center", margin: 10 }}>{greeting}</Text>
+        <Authenticated>
+          <Text style={{ textAlign: "center", margin: 10 }}>
+            You are now sign in.
+          </Text>
+        </Authenticated>
+        <Unauthenticated>
+          <Text style={{ textAlign: "center", margin: 10 }}>
+            You are now sign out.
+          </Text>
+        </Unauthenticated>
+        <SignIn />
+        <SignOut />
       </ScrollView>
       <Dialog.Container visible={visible}>
         <Dialog.Title>Username required</Dialog.Title>

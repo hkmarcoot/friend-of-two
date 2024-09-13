@@ -2,8 +2,10 @@ import { httpRouter } from "convex/server";
 import { httpAction } from "./_generated/server";
 import { api } from "./_generated/api";
 import { Id } from "./_generated/dataModel";
+import { auth } from "./auth";
 
 const http = httpRouter();
+auth.addHttpRoutes(http);
 
 // Special route for image upload to storage
 // Also runs the mutation to add the message to the database
