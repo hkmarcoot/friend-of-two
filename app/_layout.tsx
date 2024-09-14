@@ -74,7 +74,7 @@ export default function RootLayoutNav() {
         <Stack.Screen
           name="(modal)/create"
           options={{
-            headerTitle: "Start a Chat",
+            headerTitle: "Create a Chat with Your AI Mutual Friend",
             presentation: "modal",
             headerLeft: () => (
               <Link href={"/"} asChild>
