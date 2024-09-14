@@ -73,6 +73,7 @@ const Page = () => {
 
     if (selectedImage) {
       // Use SITE instead of URL in here!!!
+
       const url = `${process.env.EXPO_PUBLIC_CONVEX_SITE}/sendImage?user=${encodeURIComponent(user!)}&group_id=${chatid}&content=${encodeURIComponent(newMessage)}`;
       setUploading(true);
 

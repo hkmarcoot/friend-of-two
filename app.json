@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.hkmarcoot.friendoftwo"
     },
     "web": {
       "bundler": "metro",
@@ -33,6 +34,15 @@
     "experiments": {
       "typedRoutes": true,
       "tsconfigPaths": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "14540e11-f577-4c85-b508-7fb6855de282"
+      }
+    },
+    "owner": "hkmarcoot"
   }
 }
