@@ -9,6 +9,7 @@ export default defineSchema({
     description: v.string(),
     icon_url: v.string(),
     name: v.string(),
+    ai_name: v.string(),
     ai_description: v.string(),
   }),
   messages: defineTable({

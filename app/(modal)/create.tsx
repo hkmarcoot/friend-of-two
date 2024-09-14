@@ -15,7 +15,8 @@ const Page = () => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [icon, setIcon] = useState("");
-  const [aides, setAides] = useState("");
+  const [aiName, setAiName] = useState("");
+  const [aiDes, setAiDes] = useState("");
   const startGroup = useMutation(api.groups.create);
   const router = useRouter();
 
@@ -25,7 +26,8 @@ const Page = () => {
       name,
       description: desc,
       icon_url: icon,
-      ai_description: aides,
+      ai_name: aiName,
+      ai_description: aiDes,
     });
     router.back();
   };
@@ -36,17 +38,40 @@ const Page = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={100}
     >
-      <Text style={styles.label}>Name</Text>
-      <TextInput style={styles.textInput} value={name} onChangeText={setName} />
-      <Text style={styles.label}>Description</Text>
-      <TextInput style={styles.textInput} value={desc} onChangeText={setDesc} />
-      <Text style={styles.label}>Icon URL</Text>
-      <TextInput style={styles.textInput} value={icon} onChangeText={setIcon} />
-      <Text style={styles.label}>AI Mutual Friend Details</Text>
+      <Text style={styles.label}>Owner's Name</Text>
       <TextInput
         style={styles.textInput}
-        value={aides}
-        onChangeText={setAides}
+        value={name}
+        onChangeText={setName}
+        placeholder="Owner's Name ..."
+      />
+      <Text style={styles.label}>Description</Text>
+      <TextInput
+        style={styles.textInput}
+        value={desc}
+        onChangeText={setDesc}
+        placeholder="A place to chat with [owner]'s AI mutual friend"
+      />
+      <Text style={styles.label}>Icon URL</Text>
+      <TextInput style={styles.textInput} value={icon} onChangeText={setIcon} />
+      <Text style={styles.label}>AI Mutual Friend's Name</Text>
+      <TextInput
+        style={styles.textInput}
+        value={aiName}
+        onChangeText={setAiName}
+        placeholder="AI Name ..."
+      />
+      <Text style={styles.label}>
+        Owner's Details To Let AI Mutual Friend Knows
+      </Text>
+      <TextInput
+        editable
+        multiline={true}
+        numberOfLines={4}
+        style={styles.textInputDes}
+        value={aiDes}
+        onChangeText={setAiDes}
+        placeholder="What the owner likes / dislikes ..."
       />
       <TouchableOpacity style={styles.button} onPress={onCreateGroup}>
         <Text style={styles.buttonText}>Create</Text>
@@ -72,8 +97,18 @@ const styles = StyleSheet.create({
     minHeight: 40,
     backgroundColor: "#fff",
   },
+  textInputDes: {
+    borderWidth: 1,
+    borderColor: "gray",
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    minHeight: 200,
+    maxHeight: 200,
+    backgroundColor: "#fff",
+    padding: 10,
+  },
   button: {
-    backgroundColor: "#EEA217",
+    backgroundColor: "#02c3d9",
     borderRadius: 5,
     padding: 10,
     marginVertical: 10,

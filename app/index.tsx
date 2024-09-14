@@ -18,34 +18,15 @@ import {
 import { api } from "../convex/_generated/api";
 import { Link } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import Dialog from "react-native-dialog";
+// import Dialog from "react-native-dialog";
 
 import { SignIn } from "./SignIn";
 import { SignOut } from "./SignOut";
 
-// import { StatusBar } from "expo-status-bar";
-
-// const Page = () => {
-//   return (
-//     <View style={styles.container}>
-//       <StatusBar style="auto" />
-//       <Text>Page</Text>
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-// });
-
 const Page = () => {
   const groups = useQuery(api.groups.get) || [];
   const [name, setName] = useState("");
+  const [inputName, setInputName] = useState("");
   const [visible, setVisible] = useState(false);
   const performGetGreetingAction = useAction(api.greeting.getGreeting);
   const [greeting, setGreeting] = useState("");
@@ -68,7 +49,7 @@ const Page = () => {
   // Safe the user name to async storage
   const setUser = async () => {
     let r = (Math.random() + 1).toString(36).substring(7);
-    const userName = `${name}#${r}`;
+    const userName = `${inputName}#${r}`;
     await AsyncStorage.setItem("user", userName);
     setName(userName);
     setVisible(false);
@@ -102,7 +83,7 @@ const Page = () => {
                 style={{ width: 50, height: 50 }}
               />
               <View style={{ flex: 1 }}>
-                <Text>{group.name}</Text>
+                <Text>{group.name}'s AI Chat</Text>
                 <Text style={{ color: "#888" }}>{group.description}</Text>
               </View>
             </TouchableOpacity>
@@ -110,8 +91,8 @@ const Page = () => {
         ))}
         <TextInput
           style={styles.textInput}
-          value={name}
-          onChangeText={setName}
+          value={inputName}
+          onChangeText={setInputName}
           placeholder="Your username"
           multiline={false}
         />

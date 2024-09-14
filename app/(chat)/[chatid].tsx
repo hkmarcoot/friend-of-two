@@ -21,6 +21,7 @@ import { Doc, Id } from "@/convex/_generated/dataModel";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
+import OpenAI from "openai";
 
 const Page = () => {
   const { chatid } = useLocalSearchParams();
@@ -32,6 +33,9 @@ const Page = () => {
   const listRef = useRef<FlatList>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
+  const [ownerName, setOwnerName] = useState("");
+  const [aiName, setAiName] = useState("");
+  const [aiDes, setAiDes] = useState("");
   const convex = useConvex();
   const navigation = useNavigation();
 
@@ -42,7 +46,10 @@ const Page = () => {
         id: chatid as Id<"groups">,
       });
       console.log(groupInfo);
-      navigation.setOptions({ headerTitle: groupInfo!.name });
+      navigation.setOptions({ headerTitle: groupInfo!.name + "'s AI Chat" });
+      setOwnerName(groupInfo!.name);
+      setAiName(groupInfo!.ai_name);
+      setAiDes(groupInfo!.ai_description);
     };
     loadGroup();
   }, [chatid]);
@@ -101,7 +108,49 @@ const Page = () => {
         user: user || "Anonymous",
       });
       setNewMessage("");
+      await generateChatGPTResponse();
     }
+  };
+
+  const generateChatGPTResponse = async () => {
+    const openai = new OpenAI({
+      apiKey: process.env.EXPO_PUBLIC_OPENAI_API_KEY,
+    });
+
+    const contentMessage =
+      "Your name is " +
+      aiName +
+      ". You are " +
+      ownerName +
+      "'s AI mutual friend. " +
+      aiDes +
+      ". " +
+      user +
+      " is now asking you a question: " +
+      newMessage +
+      ". Please reply the question within 20 to 30 words.";
+
+    await openai.chat.completions
+      .create({
+        model: "gpt-4o-mini",
+        messages: [
+          {
+            role: "user",
+            content: contentMessage,
+          },
+        ],
+      })
+      .then(async (res) => {
+        // Regular mutation to add a message
+        await addMessage({
+          group_id: chatid as Id<"groups">,
+          content: res?.choices[0]?.message.content || "",
+          user: aiName || "Anonymous",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   // Open image picker and set selected image
@@ -195,7 +244,9 @@ const Page = () => {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.sendButton}
-              onPress={handleSendMessage}
+              onPress={() => {
+                handleSendMessage();
+              }}
               disabled={newMessage === ""}
             >
               <Ionicons
@@ -256,7 +307,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   sendButton: {
-    backgroundColor: "#EEA217",
+    backgroundColor: "#02c3d9",
     borderRadius: 5,
     padding: 10,
     marginLeft: 10,
@@ -276,7 +327,7 @@ const styles = StyleSheet.create({
     maxWidth: "80%",
   },
   userMessageContainer: {
-    backgroundColor: "#791363",
+    backgroundColor: "#b3025d",
     alignSelf: "flex-end",
   },
   otherMessageContainer: {

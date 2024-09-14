@@ -26,6 +26,7 @@ export const create = mutation({
     description: v.string(),
     name: v.string(),
     icon_url: v.string(),
+    ai_name: v.string(),
     ai_description: v.string(),
   },
   handler: async ({ db }, args) => {

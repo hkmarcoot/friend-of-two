@@ -49,7 +49,7 @@ export default function RootLayoutNav() {
       <Stack
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#EEA217",
+            backgroundColor: "#03e3fc",
           },
           headerTintColor: "#fff",
         }}
