@@ -62,7 +62,7 @@ const Page = () => {
         placeholder="AI Name ..."
       />
       <Text style={styles.label}>
-        Owner's Details To Let AI Mutual Friend Knows
+        Owner's Details To Let AI Mutual Friend Know
       </Text>
       <TextInput
         editable
