@@ -4,6 +4,6 @@ import { Button } from "react-native";
 export function SignOut() {
   const { signOut } = useAuthActions();
   return (
-    <Button onPress={() => signOut()} title="Sign out with GitHub"></Button>
+    <Button onPress={() => signOut()} title="Sign Out With GitHub"></Button>
   );
 }

@@ -19,5 +19,5 @@ export function SignIn() {
       await signIn("github", { code });
     }
   };
-  return <Button onPress={handleSignIn} title="Sign in with GitHub" />;
+  return <Button onPress={handleSignIn} title="Sign In With GitHub" />;
 }

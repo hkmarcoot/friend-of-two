@@ -102,14 +102,14 @@ const Page = () => {
           <Text style={{ textAlign: "center", margin: 10 }}>
             You are now sign in.
           </Text>
+          <SignOut />
         </Authenticated>
         <Unauthenticated>
           <Text style={{ textAlign: "center", margin: 10 }}>
             You are now sign out.
           </Text>
+          <SignIn />
         </Unauthenticated>
-        <SignIn />
-        <SignOut />
       </ScrollView>
       {/* <Dialog.Container visible={visible}>
         <Dialog.Title>Username required</Dialog.Title>
