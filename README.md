@@ -6,7 +6,7 @@
 
 ## Inspiration
 
-Have you ever tried to get to know a new person but need more confirming information? Those who say they have known that person for a long time may not even have a deep knowledge of him/her! With the power of AI, we can now create an AI-powered mutual friend to help solve this problem and make making a new friend easier. The AI is tailor-made by you so that what you like / dislike can be understood by anyone who wants to get close to you.
+Have you ever tried to get to know a new person but need more confirming information? Those who say they have known that person for a long time may not even have a deep understanding of him/her! With the power of AI, we can now create an AI-powered mutual friend to help solve this problem and make making a new friend easier. The AI is tailor-made by you so that what you like / dislike can be understood by anyone who wants to get close to you.
 
 ## What it does
 
@@ -18,7 +18,7 @@ The project began with the tutorial from Simon Grimm [Link Here](https://galaxie
 
 ## Challenges we ran into
 
-It was our first time using Convex Auth and building an application on React Native. We completed the project locally with the Convex Auth, and it ran perfectly on the web simulator and iPhone and Android emulators. However, the Convex Auth became ticky with the redirect_uri when producing the Netlify web app and an apk.
+It was our first time using Convex Auth and building an application on React Native. We completed the project locally with the Convex Auth, and it ran perfectly on the web simulator and iPhone and Android emulators. However, the Convex Auth became tricky with the redirect_uri when producing the Netlify web app and an apk.
 
 ## Accomplishments that we're proud of
 
