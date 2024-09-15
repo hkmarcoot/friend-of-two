@@ -1,3 +1,9 @@
+## Project Links
+
+[DEVPOST App Landing Page](https://devpost.com/software/friend-of-two-ai-powered-mutual-friend)
+
+[YouTube App Demo](https://www.youtube.com/watch?v=UlfuvPYLBV8)
+
 ## Inspiration
 
 Have you ever tried to get to know a new person but need more confirming information? Those who say they have known that person for a long time may not even have a deep knowledge of him/her! With the power of AI, we can now create an AI-powered mutual friend to help solve this problem and make making a new friend easier. The AI is tailor-made by you so that what you like / dislike can be understood by anyone who wants to get close to you.
