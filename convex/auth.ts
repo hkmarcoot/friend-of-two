@@ -18,7 +18,7 @@ const allowedRedirects = isDevelopment
   : [
       "https://opulent-kingfisher-620.convex.site",
       "https://friend-of-two.netlify.app",
-      "myapp://",
+      // "myapp://",
     ]; // Production URI
 
 export const { auth, signIn, signOut, store } = convexAuth({
